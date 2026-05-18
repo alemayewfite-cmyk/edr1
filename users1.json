@@ -54,5 +54,26 @@
     "password": "ash@EDR",
     "name": "Ashu",
     "role": "store"
+  },
+  {
+    "id": "u1779094573737",
+    "username": "Genet Finance",
+    "password": "gen@EDR",
+    "name": "Genet",
+    "role": "fin"
+  },
+  {
+    "id": "u1779094593720",
+    "username": "Takele Uma",
+    "password": "tak@EDR",
+    "name": "Takele Uma",
+    "role": "ceo"
+  },
+  {
+    "id": "u1779094618753",
+    "username": "Eleni Birhanu",
+    "password": "ele@EDR",
+    "name": "Eleni Birhanu",
+    "role": "cos"
   }
 ]
