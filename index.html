@@ -1265,7 +1265,7 @@ let _itemCount = 3;
 
 function itemRowHtml(i) {
   return `<tr id="item_row_${i}">
-    <td><input placeholder="Item description" id="item_desc_${i}"></td>
+    <td><input placeholder="Item description" id="item_desc_${i}" style="background-color: darkgreen; color: white;"></td>
     <td><input placeholder="Specification / details" id="item_spec_${i}"></td>
     <td><input placeholder="0" id="item_qty_${i}" type="number" min="0"></td>
     <td><input placeholder="pcs / kg / m..." id="item_unit_${i}"></td>
@@ -1280,7 +1280,7 @@ function addItemRow() {
   const tr = document.createElement(&apos;tr&apos;);
   tr.id = `item_row_${i}`;
   tr.innerHTML = `
-    <td><input placeholder="Item description" id="item_desc_${i}" class="form-input" style="border:none;background:transparent;padding:6px 0;"></td>
+    <td><input placeholder="Item description" id="item_desc_${i}" class="form-input" style="border:none;background-color: darkgreen; color: white; padding:6px 0;"></td>
     <td><input placeholder="Specification / details" id="item_spec_${i}" class="form-input" style="border:none;background:transparent;padding:6px 0;"></td>
     <td><input placeholder="0" id="item_qty_${i}" type="number" min="0" class="form-input" style="border:none;background:transparent;padding:6px 0;"></td>
     <td><input placeholder="pcs / kg / m..." id="item_unit_${i}" class="form-input" style="border:none;background:transparent;padding:6px 0;"></td>
@@ -1696,7 +1696,7 @@ function viewRequest(id) {
       <div class="detail-val">
         <div style="border:1px solid var(--accent3);border-radius:6px;padding:10px 14px;background:rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;">
           <div>
-            <div style="font-weight:700;font-size:14px;color:#4f46e5;">Kalkidan Teshome <img src="kalkidan.png" alt="Kalkidan Approval" style="max-height:120px; vertical-align:middle; margin-left:10px;"></div>
+            <div style="font-weight:700;font-size:14px;color:#4f46e5;">Kalkidan Teshome</div>
             <div style="font-size:12px;color:var(--text2);margin-top:2px;">Chief of Procurement and Property Management</div>
             <div style="font-size:11px;color:var(--accent3);font-family:&apos;DM Mono&apos;,monospace;margin-top:6px;">Approved by ${r.cppmApprovedBy} · ${r.cppmApprovedAt}</div>
           </div>
@@ -1813,14 +1813,14 @@ function buildCoverLetterHTML(cl, ceR, cppmR, r) {
   );
   const cppmBlock = cppmR ? (
     &apos;<div style="display:flex;align-items:flex-start;gap:18px;">&apos; +
-    &apos;<div style="flex:1"><div style="font-weight:700;font-size:13px;color:#000000;">&apos; + (cppmR.cppmApprovedBy||&apos;Kalkidan Teshome <img src="kalkidan.png" alt="Kalkidan Approval" style="max-height:120px; vertical-align:middle; margin-left:10px;">&apos;) + &apos;</div>&apos; +
+    &apos;<div style="flex:1"><div style="font-weight:700;font-size:13px;color:#000000;">&apos; + (cppmR.cppmApprovedBy||&apos;Kalkidan Teshome&apos;) + &apos;</div>&apos; +
     &apos;<div style="font-size:12px;color:#444;margin-top:2px;">Chief of Procurement and Property Management Officer</div>&apos; +
     &apos;<div style="font-size:11px;color:#888;margin-top:4px;">&apos; + (cppmR.cppmApprovedAt||&apos;&apos;) + &apos;</div></div>&apos; +
     &apos;<div style="text-align:center"><img src="&apos; + KALKIDAN_SIG_B64 + &apos;" style="max-height:52px;max-width:120px;object-fit:contain;display:block;background:#fff;border:1px solid #cccccc;border-radius:3px;">&apos; +
     &apos;<div style="width:120px;height:1px;background:#000000;margin-top:2px;"></div>&apos; +
     &apos;<div style="font-size:9px;color:#555555;margin-top:2px;font-family:monospace;">Signature</div></div></div>&apos;
   ) : (
-    &apos;<div style="flex:1"><div style="font-weight:700;font-size:13px;color:#4f46e5;">Kalkidan Teshome <img src="kalkidan.png" alt="Kalkidan Approval" style="max-height:120px; vertical-align:middle; margin-left:10px;"></div>&apos; +
+    &apos;<div style="flex:1"><div style="font-weight:700;font-size:13px;color:#4f46e5;">Kalkidan Teshome</div>&apos; +
     &apos;<div style="font-size:12px;color:#444;margin-top:2px;">Chief of Procurement and Property Management Officer</div>&apos; +
     &apos;<div style="width:160px;height:1px;background:#999;margin-top:40px;"></div>&apos; +
     &apos;<div style="font-size:10px;color:#888;margin-top:2px;">Signature</div></div>&apos;
@@ -1886,7 +1886,7 @@ function exportPRtoPDF(id) {
     : &apos;&apos;;
 
   const cppmTitreHtml = r.cppmTitre ?
-    &apos;<div style="margin-top:24px;border-top:2px solid #4f46e5;padding-top:16px;"><div style="font-size:11px;color:#4f46e5;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Chief of Procurement &amp; Property Management — Approval Titre</div><div style="border:1px solid #4f46e5;border-radius:4px;padding:10px 14px;display:flex;align-items:center;gap:20px;background:rgba(79,70,229,0.06);"><div><div style="font-weight:700;font-size:15px;color:#4f46e5;">Kalkidan Teshome <img src="kalkidan.png" alt="Kalkidan Approval" style="max-height:120px; vertical-align:middle; margin-left:10px;"></div><div style="font-size:13px;color:#4f46e5;margin-top:3px;">Chief of Procurement and Property Management</div><div style="font-size:11px;color:#555;margin-top:6px;">Approved by &apos; + (r.cppmApprovedBy||&apos;&apos;) + &apos; · &apos; + (r.cppmApprovedAt||&apos;&apos;) + &apos;</div></div><div style="text-align:center;"><img src="&apos; + KALKIDAN_SIG_B64 + &apos;" style="max-height:55px;max-width:130px;object-fit:contain;background:#fff;border:1px solid #cccccc;border-radius:4px;display:block;"><div style="width:130px;height:1px;background:#4f46e5;margin-top:3px;"></div><div style="font-size:9px;color:#4f46e5;margin-top:2px;font-family:monospace;">Signature</div></div></div></div>&apos;
+    &apos;<div style="margin-top:24px;border-top:2px solid #4f46e5;padding-top:16px;"><div style="font-size:11px;color:#4f46e5;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Chief of Procurement &amp; Property Management — Approval Titre</div><div style="border:1px solid #4f46e5;border-radius:4px;padding:10px 14px;display:flex;align-items:center;gap:20px;background:rgba(79,70,229,0.06);"><div><div style="font-weight:700;font-size:15px;color:#4f46e5;">Kalkidan Teshome</div><div style="font-size:13px;color:#4f46e5;margin-top:3px;">Chief of Procurement and Property Management</div><div style="font-size:11px;color:#555;margin-top:6px;">Approved by &apos; + (r.cppmApprovedBy||&apos;&apos;) + &apos; · &apos; + (r.cppmApprovedAt||&apos;&apos;) + &apos;</div></div><div style="text-align:center;"><img src="&apos; + KALKIDAN_SIG_B64 + &apos;" style="max-height:55px;max-width:130px;object-fit:contain;background:#fff;border:1px solid #cccccc;border-radius:4px;display:block;"><div style="width:130px;height:1px;background:#4f46e5;margin-top:3px;"></div><div style="font-size:9px;color:#4f46e5;margin-top:2px;font-family:monospace;">Signature</div></div></div></div>&apos;
     : &apos;&apos;;
 
   const pdfHtml = &apos;<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Purchase Request &apos; + r.id + &apos;</title><style>body{font-family:Arial,sans-serif;margin:40px;color:#111;font-size:13px;}h1{font-size:20px;color:#000000;}table{width:100%;border-collapse:collapse;margin-top:6px;}th{background:#000000;color:#fff;padding:7px 10px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;}td{border:1px solid #ddd;padding:6px 10px;font-size:13px;}.row{display:flex;gap:8px;margin-bottom:10px;}.key{font-size:11px;color:#555555;text-transform:uppercase;letter-spacing:1px;min-width:160px;flex-shrink:0;}.footer{margin-top:40px;font-size:11px;color:#888;border-top:1px solid #ddd;padding-top:10px;text-align:center;}@media print{body{margin:20px;}button{display:none!important;}}</style></head><body>&apos;
@@ -1906,7 +1906,7 @@ function exportPRtoPDF(id) {
     + totalBox
     + ((r.ceTitre || r.cppmTitre) ? &apos;<div style="margin-top:24px;border-top:2px solid #cccccc;padding-top:16px;"><div style="font-size:10px;color:#555555;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px;">Approvals &amp; Signatures</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">&apos; : &apos;&apos;)
     + (r.ceTitre ? &apos;<div style="border:1.5px solid #4f46e5;border-radius:6px;padding:12px 14px;background:rgba(79,70,229,0.06);"><div style="font-size:9px;font-weight:700;color:#4f46e5;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Chief of Engineering Approval</div><div style="display:flex;align-items:center;justify-content:space-between;gap:10px;"><div><div style="font-weight:700;font-size:13px;color:#4f46e5;">Daniel HaileMichael</div><div style="font-size:11px;color:#4f46e5;margin-top:2px;">Chief of Engineering and Construction Officer</div><div style="font-size:10px;color:#555;margin-top:6px;">Signed by &apos; + (r.ceSignedBy||&apos;&apos;) + &apos; · &apos; + (r.ceSignedAt||&apos;&apos;) + &apos;</div></div><div style="text-align:center;flex-shrink:0;"><img src="&apos; + DANIEL_SIG_B64 + &apos;" style="max-height:50px;max-width:110px;object-fit:contain;background:#fff;border:1px solid #cccccc;border-radius:4px;display:block;"><div style="width:110px;height:1px;background:#4f46e5;margin-top:3px;"></div><div style="font-size:8px;color:#4f46e5;margin-top:2px;font-family:monospace;">Signature</div></div></div></div>&apos; : &apos;&apos;)
-    + (r.cppmTitre ? &apos;<div style="border:1.5px solid #4f46e5;border-radius:6px;padding:12px 14px;background:rgba(79,70,229,0.06);"><div style="font-size:9px;font-weight:700;color:#4f46e5;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Chief of Procurement Approval</div><div style="display:flex;align-items:center;justify-content:space-between;gap:10px;"><div><div style="font-weight:700;font-size:13px;color:#4f46e5;">Kalkidan Teshome <img src="kalkidan.png" alt="Kalkidan Approval" style="max-height:120px; vertical-align:middle; margin-left:10px;"></div><div style="font-size:11px;color:#4f46e5;margin-top:2px;">Chief of Procurement and Property Management</div><div style="font-size:10px;color:#555;margin-top:6px;">Approved by &apos; + (r.cppmApprovedBy||&apos;&apos;) + &apos; · &apos; + (r.cppmApprovedAt||&apos;&apos;) + &apos;</div></div><div style="text-align:center;flex-shrink:0;"><img src="&apos; + KALKIDAN_SIG_B64 + &apos;" style="max-height:50px;max-width:110px;object-fit:contain;background:#fff;border:1px solid #cccccc;border-radius:4px;display:block;"><div style="width:110px;height:1px;background:#4f46e5;margin-top:3px;"></div><div style="font-size:8px;color:#4f46e5;margin-top:2px;font-family:monospace;">Signature</div></div></div></div>&apos; : &apos;&apos;)
+    + (r.cppmTitre ? &apos;<div style="border:1.5px solid #4f46e5;border-radius:6px;padding:12px 14px;background:rgba(79,70,229,0.06);"><div style="font-size:9px;font-weight:700;color:#4f46e5;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Chief of Procurement Approval</div><div style="display:flex;align-items:center;justify-content:space-between;gap:10px;"><div><div style="font-weight:700;font-size:13px;color:#4f46e5;">Kalkidan Teshome</div><div style="font-size:11px;color:#4f46e5;margin-top:2px;">Chief of Procurement and Property Management</div><div style="font-size:10px;color:#555;margin-top:6px;">Approved by &apos; + (r.cppmApprovedBy||&apos;&apos;) + &apos; · &apos; + (r.cppmApprovedAt||&apos;&apos;) + &apos;</div></div><div style="text-align:center;flex-shrink:0;"><img src="&apos; + KALKIDAN_SIG_B64 + &apos;" style="max-height:50px;max-width:110px;object-fit:contain;background:#fff;border:1px solid #cccccc;border-radius:4px;display:block;"><div style="width:110px;height:1px;background:#4f46e5;margin-top:3px;"></div><div style="font-size:8px;color:#4f46e5;margin-top:2px;font-family:monospace;">Signature</div></div></div></div>&apos; : &apos;&apos;)
     + ((r.ceTitre || r.cppmTitre) ? &apos;</div></div>&apos; : &apos;&apos;)
     + ((r.ceTitre || r.cppmTitre) ? &apos;<div style="text-align:center;margin-top:20px;"><img src="&apos; + STAMP_B64 + &apos;" style="width:110px;height:110px;object-fit:contain;opacity:0.92;"></div>&apos; : &apos;&apos;)
     + &apos;<div class="footer">Generated by EDR Engineering Purchase Request Platform · &apos; + new Date().toLocaleString() + &apos;</div>&apos;
@@ -2225,7 +2225,7 @@ function doAction(id, nextStage, action) {
     if (action === &apos;processed&apos;) r.purchaseNote = note;
     // Store CPPM titre when CPPM approves (moves to cppm_review stage)
     if (currentUser.role === &apos;cppm&apos; &amp;&amp; nextStage === &apos;cppm_review&apos;) {
-      r.cppmTitre = &apos;Kalkidan Teshome <img src="kalkidan.png" alt="Kalkidan Approval" style="max-height:120px; vertical-align:middle; margin-left:10px;">\nChief of Procurement and Property Management&apos;;
+      r.cppmTitre = &apos;Kalkidan Teshome\nChief of Procurement and Property Management&apos;;
       r.cppmApprovedBy = currentUser.name;
       r.cppmApprovedAt = now();
     }
